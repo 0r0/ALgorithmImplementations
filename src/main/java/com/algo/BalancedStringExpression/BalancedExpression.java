@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Stack;
 
 public class BalancedExpression {
-    private final List<Character> right = Arrays.asList(')',']','}');
-    private final List<Character> left = Arrays.asList('(','[','{');
+    private final List<Character> rightBrackets = Arrays.asList(')',']','}');
+    private final List<Character> leftBrackets = Arrays.asList('(','[','{');
     private String expression;
 
     public BalancedExpression(String expression) {
@@ -37,16 +37,17 @@ public class BalancedExpression {
 
 
     private boolean isLeftBracket(char c) {
-        return left.contains(c);
+        return leftBrackets.contains(c);
 
     }
 
     private boolean isRightBracket(char c) {
-        return right.contains(c);
+        return rightBrackets.contains(c);
     }
 
-    private boolean bracketMatch(char left, char right) {
-        return ((right == ']' && left != '[') || (right == '}' && left != '{') || (right == ')' && left != '('));
+    private boolean bracketMatch(char leftChar, char rightChar) {
+        return leftBrackets.indexOf(leftChar)== rightBrackets.indexOf(rightChar);
+
 
 
 
