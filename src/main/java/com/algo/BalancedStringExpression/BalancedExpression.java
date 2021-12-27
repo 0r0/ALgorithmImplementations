@@ -1,8 +1,12 @@
 package com.algo.BalancedStringExpression;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class BalancedExpression {
+    private final List<Character> right = Arrays.asList(')',']','}');
+    private final List<Character> left = Arrays.asList('(','[','{');
     private String expression;
 
     public BalancedExpression(String expression) {
@@ -33,17 +37,12 @@ public class BalancedExpression {
 
 
     private boolean isLeftBracket(char c) {
-        if (c == '(' || c == '[' || c == '{') {
-            return true;
-        }
-        return false;
+        return left.contains(c);
 
     }
 
     private boolean isRightBracket(char c) {
-        if (c == ']' || c == '}' || c == ')')
-            return true;
-        return false;
+        return right.contains(c);
     }
 
     private boolean bracketMatch(char left, char right) {
