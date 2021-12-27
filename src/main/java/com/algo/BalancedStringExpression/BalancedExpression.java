@@ -31,6 +31,7 @@ public class BalancedExpression {
 
     }
 
+
     private boolean isLeftBracket(char c) {
         if (c == '(' || c == '[' || c == '{') {
             return true;
