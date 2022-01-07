@@ -3,6 +3,7 @@ package com.algo;
 
 
 import com.algo.BalancedStringExpression.BalancedExpression;
+import com.algo.QueueExample.QueueAlgorithms;
 import com.algo.TreeExample.Tree;
 
 import java.util.ArrayDeque;
@@ -21,24 +22,11 @@ public class App {
                 queue.add(30);
                 queue.add(40);
                 queue.add(50);
-                //System.out.println(queue);
-                reverse1(queue);
 
+               QueueAlgorithms.reverse1(queue);
+                QueueAlgorithms.reverse2(queue);
         }
 
-        public static void reverse1(Queue<Integer> queue) {
-                if(queue.isEmpty())
-                        return;
 
-                Object[] queueArray=queue.toArray();
-                Queue<Integer> reverseQueue = new ArrayDeque<>();
-                for(int i=queueArray.length-1; i>=0; i--)
-                {
-                        reverseQueue.add((int)queueArray[i]);
-                }
-                System.out.println(queue);
-                System.out.println(reverseQueue);
-
-        }
 
 }
