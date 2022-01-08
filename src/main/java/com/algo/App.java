@@ -4,6 +4,7 @@ package com.algo;
 
 import com.algo.QueueExample.ArrayQueue;
 import com.algo.QueueExample.QueueByStack;
+import com.algo.QueueExample.QueueByTwoStacks;
 
 /**
  * Hello world!
@@ -11,7 +12,7 @@ import com.algo.QueueExample.QueueByStack;
 public class App {
         public static void main(String[] args) {
 
-            QueueByStack queue=new QueueByStack();
+            QueueByTwoStacks queue=new QueueByTwoStacks();
             queue.enqueue(10);
             queue.enqueue(20);
             queue.enqueue(30);
@@ -31,12 +32,12 @@ public class App {
             queue.enqueue(90);
             System.out.println(queue);
             System.out.println(queue.dequeue());//60
-            System.out.println(queue.dequeue());//60
+            System.out.println(queue.dequeue());//70
 
-            System.out.println(queue.dequeue());//60
+            System.out.println(queue.dequeue());//80
 
-            System.out.println(queue.dequeue());//60
-
+            System.out.println(queue.dequeue());//90
+            System.out.println(queue);
             System.out.println(queue.dequeue());//60
             System.out.println(queue.dequeue());//60
 
