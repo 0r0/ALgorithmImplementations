@@ -3,6 +3,7 @@ package com.algo;
 
 
 import com.algo.QueueExample.ArrayQueue;
+import com.algo.QueueExample.QueueByStack;
 
 /**
  * Hello world!
@@ -10,35 +11,38 @@ import com.algo.QueueExample.ArrayQueue;
 public class App {
         public static void main(String[] args) {
 
-            ArrayQueue arrayQueue=new ArrayQueue(8);
+            QueueByStack queue=new QueueByStack();
+            queue.enqueue(10);
+            queue.enqueue(20);
+            queue.enqueue(30);
+            queue.enqueue(40);
+            queue.enqueue(50);
+            System.out.println(queue);
+            System.out.println(queue.dequeue());//10
+            System.out.println(queue.dequeue());//20
+            System.out.println(queue);
+            queue.enqueue(60);
+            System.out.println(queue.dequeue());//30
+            System.out.println(queue.dequeue());//40
+            System.out.println(queue.dequeue());//50
+            System.out.println(queue);
+            queue.enqueue(70);
+            queue.enqueue(80);
+            queue.enqueue(90);
+            System.out.println(queue);
+            System.out.println(queue.dequeue());//60
+            System.out.println(queue.dequeue());//60
 
-            arrayQueue.enqueue(100);
-            arrayQueue.enqueue(200);
-            arrayQueue.enqueue(300);
-            arrayQueue.enqueue(400);
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue);
-            arrayQueue.enqueue(101);
-            arrayQueue.enqueue(201);
-            arrayQueue.enqueue(301);
-            arrayQueue.enqueue(401);
-            arrayQueue.enqueue(501);
-            arrayQueue.enqueue(601);
-            System.out.println(arrayQueue);
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue);
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue.dequeue());
-            System.out.println(arrayQueue);
+            System.out.println(queue.dequeue());//60
+
+            System.out.println(queue.dequeue());//60
+
+            System.out.println(queue.dequeue());//60
+            System.out.println(queue.dequeue());//60
+
+
+
+
 
         }
 
