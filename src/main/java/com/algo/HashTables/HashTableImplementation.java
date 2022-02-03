@@ -40,6 +40,20 @@ public class HashTableImplementation {
         return null;
 
     }
+    public void remove(int key)
+    {
+        var index = hash(key);
+        var bucket = entries[index];
+        if(bucket==null)
+            throw  new IllegalStateException();
+        for(var entity : bucket){
+            if (entity.key == key) {
+                bucket.remove(entity);
+                return;
+            }
+        }
+        throw new IllegalStateException();
+    }
     private int hash(int key) {
         return key % entries.length;
     }
