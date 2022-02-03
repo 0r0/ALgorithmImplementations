@@ -11,6 +11,9 @@ public class App {
         tree.insert(6);
         tree.insert(4);
         tree.insert(11);
+        //tree.find(11);
+        System.out.println(tree.find(4));
+        System.out.println(tree.find(55));
         System.out.println("done");
 
     }
