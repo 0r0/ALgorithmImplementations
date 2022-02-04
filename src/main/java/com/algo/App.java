@@ -15,6 +15,11 @@ public class App {
         System.out.println(tree.find(4));
         System.out.println(tree.find(55));
         System.out.println("done");
+        tree.traversePreOrder();
+        System.out.println("done");
+        tree.traverseInOrder();
+        System.out.println("done");
+        tree.traversePostOrder();
 
     }
 
