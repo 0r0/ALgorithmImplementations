@@ -94,5 +94,58 @@ public class Tree {
         traversePostOrder(root.rightChild);
         System.out.println(root.value);
     }
+
+    private boolean isLeaf(Node node)
+    {
+        return node.rightChild== null && node.leftChild==null ;
+
+    }
+    public int height()
+    {
+        return height(root);
+    }
+    private int height(Node root)
+    {
+        if(root==null)
+            return -1;
+        if(isLeaf(root))
+            return 0;
+        return 1+Math.max(height(root.leftChild), height(root.rightChild));
+    }
+    public int min(){
+        return min(root);
+    }
+    private int min(Node root)
+    {
+
+        if(isLeaf(root))
+            return root.value;
+        var left=min(root.leftChild);
+        var right=min(root.rightChild);
+        return Math.min(Math.min(left,right), root.value);
+    }
+    public boolean isEqual(Tree tree)
+    {
+
+        return isEqual(root,tree.root);
+    }
+    private boolean isEqual(Node root, Node other)
+    {
+        if(root==null && other==null)
+            return true;
+        if(root!=null && other!=null)
+            return (root.value==other.value) &&(isEqual(root.leftChild,other.leftChild) && isEqual(root.rightChild,other.rightChild));
+        return false;
+    }
+    public boolean validatingBinarySearch(){
+        return validatingBinarySearch(root,Integer.MAX_VALUE,Integer.MIN_VALUE);
+    }
+    private boolean validatingBinarySearch(Node root,int max,int min){
+        if(root==null)
+            return true;
+        if(root.value>max || root.value<min)
+            return false;
+        return validatingBinarySearch(root.leftChild,root.value-1,min) && validatingBinarySearch(root.rightChild,max,root.value+1);
+    }
 }
 
