@@ -3,168 +3,178 @@ package com.algo.TreeExample;
 import java.util.ArrayList;
 
 public class Tree {
-    private class Node{
-        private int value;
-        private  Node leftChild;
-        private Node rightChild;
-        public Node(int value){
-            this.value = value;
-        }
-        @Override
-        public String toString(){
-            return "Node= "+ value;
-        }
-
-
-
-    }
     private Node root;
-    public void insert(int value)
-    {
-        var node=new Node(value);
-        if(root==null){
+
+    public void insert(int value) {
+        var node = new Node(value);
+        if (root == null) {
             root = node;
             return;
         }
         var current = root;
-        while(true){
-            if(current.value<value){
-                if(current.rightChild==null)
-                {
+        while (true) {
+            if (current.value < value) {
+                if (current.rightChild == null) {
                     current.rightChild = node;
                     break;
                 }
-                current=current.rightChild;
+                current = current.rightChild;
 
-            }
-            else{
-                if(current.leftChild==null)
-                {
+            } else {
+                if (current.leftChild == null) {
                     current.leftChild = node;
                     break;
                 }
-                current=current.leftChild;
+                current = current.leftChild;
             }
         }
     }
-    public boolean find(int value)
-    {
-        var current=root;
-        while(current!=null) {
+
+    public boolean find(int value) {
+        var current = root;
+        while (current != null) {
 
             if (value < current.value)
-                current=current.leftChild;
-            else if(value > current.value)
-                current=current.rightChild;
+                current = current.leftChild;
+            else if (value > current.value)
+                current = current.rightChild;
             else
                 return true;
         }
         return false;
     }
 
-    public void traversePreOrder()
-    {
+    public void traversePreOrder() {
         traversePreOrder(root);
     }
-    private void traversePreOrder(Node root)
-    {
-        if (root==null)
+
+    private void traversePreOrder(Node root) {
+        if (root == null)
             return;
         System.out.println(root.value);
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
     }
-    public void traverseInOrder(){
+
+    public void traverseInOrder() {
         traverseInOrder(root);
     }
-    private void traverseInOrder(Node root)
-    {
-        if (root==null)
+
+    private void traverseInOrder(Node root) {
+        if (root == null)
             return;
         traverseInOrder(root.leftChild);
         System.out.println(root.value);
         traverseInOrder(root.rightChild);
     }
-    public void traversePostOrder(){
+
+    public void traversePostOrder() {
         traversePostOrder(root);
     }
-    private void traversePostOrder(Node root)
-    {
-        if (root==null)
+
+    private void traversePostOrder(Node root) {
+        if (root == null)
             return;
         traversePostOrder(root.leftChild);
         traversePostOrder(root.rightChild);
         System.out.println(root.value);
     }
 
-    private boolean isLeaf(Node node)
-    {
-        return node.rightChild== null && node.leftChild==null ;
+    private boolean isLeaf(Node node) {
+        return node.rightChild == null && node.leftChild == null;
 
     }
-    public int height()
-    {
+
+    public int height() {
         return height(root);
     }
-    private int height(Node root)
-    {
-        if(root==null)
+
+    private int height(Node root) {
+        if (root == null)
             return -1;
-        if(isLeaf(root))
+        if (isLeaf(root))
             return 0;
-        return 1+Math.max(height(root.leftChild), height(root.rightChild));
+        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
-    public int min(){
+
+    public int min() {
         return min(root);
     }
-    private int min(Node root)
-    {
 
-        if(isLeaf(root))
+    private int min(Node root) {
+
+        if (isLeaf(root))
             return root.value;
-        var left=min(root.leftChild);
-        var right=min(root.rightChild);
-        return Math.min(Math.min(left,right), root.value);
+        var left = min(root.leftChild);
+        var right = min(root.rightChild);
+        return Math.min(Math.min(left, right), root.value);
     }
-    public boolean isEqual(Tree tree)
-    {
 
-        return isEqual(root,tree.root);
+    public boolean isEqual(Tree tree) {
+
+        return isEqual(root, tree.root);
     }
-    private boolean isEqual(Node root, Node other)
-    {
-        if(root==null && other==null)
+
+    private boolean isEqual(Node root, Node other) {
+        if (root == null && other == null)
             return true;
-        if(root!=null && other!=null)
-            return (root.value==other.value) &&(isEqual(root.leftChild,other.leftChild) && isEqual(root.rightChild,other.rightChild));
+        if (root != null && other != null)
+            return (root.value == other.value) && (isEqual(root.leftChild, other.leftChild) && isEqual(root.rightChild, other.rightChild));
         return false;
     }
-    public boolean validatingBinarySearch(){
-        return validatingBinarySearch(root,Integer.MAX_VALUE,Integer.MIN_VALUE);
+
+    public boolean validatingBinarySearch() {
+        return validatingBinarySearch(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
     }
-    private boolean validatingBinarySearch(Node root,int max,int min){
-        if(root==null)
+
+    private boolean validatingBinarySearch(Node root, int max, int min) {
+        if (root == null)
             return true;
-        if(root.value>max || root.value<min)
+        if (root.value > max || root.value < min)
             return false;
-        return validatingBinarySearch(root.leftChild,root.value-1,min) && validatingBinarySearch(root.rightChild,max,root.value+1);
+        return validatingBinarySearch(root.leftChild, root.value - 1, min) && validatingBinarySearch(root.rightChild, max, root.value + 1);
     }
-    public ArrayList<Integer> getNodesAtDistance(int distance)
-    {
-        ArrayList<Integer> list=new ArrayList<Integer>();
-        getNodesAtDistance(root,distance,list);
+
+    public ArrayList<Integer> getNodesAtDistance(int distance) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        getNodesAtDistance(root, distance, list);
         return list;
     }
-    private void getNodesAtDistance(Node root,int distance,ArrayList<Integer> list){
-        if(root==null)
+
+    private void getNodesAtDistance(Node root, int distance, ArrayList<Integer> list) {
+        if (root == null)
             return;
-        if(distance==0) {
+        if (distance == 0) {
             list.add(root.value);
             return;
         }
-        getNodesAtDistance(root.leftChild,distance-1,list);
-        getNodesAtDistance(root.rightChild,distance-1,list);
+        getNodesAtDistance(root.leftChild, distance - 1, list);
+        getNodesAtDistance(root.rightChild, distance - 1, list);
+    }
 
+    public void traverseLevelOrder(){
+        for(int i=0;i<=height();i++)
+        {
+            for(var item:getNodesAtDistance(i))
+            {
+                System.out.println("level "+i+":"+item);
+            }
+        }
+    }
+
+    private class Node {
+        private int value;
+        private Node leftChild;
+        private Node rightChild;
+
+        public Node(int value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return "Node= " + value;
+        }
 
 
     }

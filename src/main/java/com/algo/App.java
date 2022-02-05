@@ -26,8 +26,9 @@ public class App {
 //        tree2.insert(21);
         tree2.insert(2);
        // System.out.println(tree.isEqual(tree2));
-        System.out.println(tree2.validatingBinarySearch());
-        System.out.println(tree2.getNodesAtDistance(2));
+//        System.out.println(tree2.validatingBinarySearch());
+//        System.out.println(tree2.getNodesAtDistance(2));
+        tree.traverseLevelOrder();
 //        tree.insert(3);
         //tree.find(11);
 //        System.out.println(tree.find(4));
