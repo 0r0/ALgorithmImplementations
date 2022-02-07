@@ -14,9 +14,11 @@ public class App {
         tree.insert(11);
         tree.insert(7);
         tree.insert(8);
-        tree.insert(9);
-        tree.insert(21);
-        tree.insert(2);
+//        tree.insert(9);
+//        tree.insert(21);
+//        tree.insert(2);
+         System.out.println(tree);
+
 
 
     }
