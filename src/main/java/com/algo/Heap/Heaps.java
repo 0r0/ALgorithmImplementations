@@ -35,30 +35,56 @@ public class Heaps {
         heap[second]=temp;
     }
 
-    public void remove()
+    public int remove()
     {
         if(isEmpty())
             throw new IllegalStateException();
+
+        var root=heap[0];
+        heap[0]=heap[--size];
+        bubbleDown();
+
+        return root;
+    }
+    private void bubbleDown(){
         var index=0;
-        heap[index]=heap[--size];
         while(index<size && !isValid(index))
         {
             var largerChildIndex=largerChildIndex(index);
             swap(index,largerChildIndex);
             index=largerChildIndex;
         }
-
     }
-    private boolean isEmpty()
+    public boolean isEmpty()
     {
         return size==0;
     }
     private int largerChildIndex(int index)
     {
-        return leftChild(index)>rightChild(index) ?leftChildIndex(index):rightChildIndex(index);
+        if(!hasLeftChild(index))
+            return index;
+        if(!hasRightChild(index))
+            return  leftChildIndex(index);
+
+
+        return (leftChild(index)>rightChild(index)) ?leftChildIndex(index):rightChildIndex(index);
     }
-    private boolean isValid(int index){
-        return heap[index]>leftChild(index) && heap[index]>rightChild(index) ;
+    private boolean hasLeftChild(int index)
+    {
+        return leftChildIndex(index)<=size;
+    }
+    private boolean hasRightChild(int index)
+    {
+        return rightChildIndex(index)<=size;
+    }
+    private boolean isValid(int index) {
+        if(!hasLeftChild(index))
+            return true;
+        boolean isValid=(heap[index]>=leftChild(index));
+        if(hasRightChild(index))
+             isValid&= heap[index]>=rightChild(index);
+
+        return isValid ;
     }
     private int leftChild(int index)
     {
@@ -77,5 +103,7 @@ public class Heaps {
     {
         return index*2+2;
     }
+
+
 
 }
