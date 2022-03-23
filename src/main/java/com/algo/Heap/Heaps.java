@@ -103,6 +103,9 @@ public class Heaps {
     {
         return index*2+2;
     }
+    public int max(){
+        return heap[0];
+    }
 
 
 
