@@ -15,6 +15,7 @@ public class App {
         int[] arr= {5,3,8,4,1,2,55,95,27,31};
         MaxHeap.heapify(arr);
         System.out.println(Arrays.toString(arr));
+        System.out.println(MaxHeap.kthLargerItem(20,arr));
 
 
 

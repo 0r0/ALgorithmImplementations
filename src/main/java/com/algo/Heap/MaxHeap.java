@@ -35,5 +35,23 @@ public class MaxHeap {
         items[first]=items[second];
         items[second]=temp;
     }
+    public static int kthLargerItem(int k,int[] numbers)
+    {
+        if(k<0 ||k >numbers.length)
+            throw  new IllegalArgumentException();
+        var heap =new Heaps();
+        for(var number:numbers)
+        {
+            heap.insert(number);
+        }
+        for(int i=0;i<k;i++)
+        {
+            heap.remove();
+        }
+        return heap.max();
+
+    }
+
+
 
 }
